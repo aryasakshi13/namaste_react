@@ -2,7 +2,7 @@ import RestaurentCard from "./RestaurantCard";
 import resList from "../utills/mockData";
 import { useState } from "react";
 const Body = () =>{
-  const restaurants = resList[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  const restaurants = resList[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
    const [ListofRestaurant,setListofRestaurant] = useState(restaurants)
     // const restaurants = resList[0].card.card.gridElements.infoWithStyle.restaurants;
     return(
