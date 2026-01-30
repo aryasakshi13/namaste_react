@@ -10,7 +10,7 @@
    padding: 0px 20px; 
 }
 .nav-item > ul {
-    font-size: 24px;
+    font-size: 15px;
    display: flex; 
 }
  .nav-item > ul > li {
@@ -21,7 +21,7 @@
     padding: 5px;
     margin: 5px;
     width: 200px ;
-    height: 350px ; 
+    height: 400px ; 
     background-color: rgb(245, 241, 226);
  }
 
