@@ -1,30 +1,70 @@
 import RestaurentCard from "./RestaurantCard";
-import resList from "../utills/mockData";
-import { useState } from "react";
+
+import { useState,useEffect } from "react";
+import Shimmer from "./Shimmer";
+
 const Body = () =>{
-  const restaurants = resList[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-   const [ListofRestaurant,setListofRestaurant] = useState(restaurants)
-    // const restaurants = resList[0].card.card.gridElements.infoWithStyle.restaurants;
+  // local State variable - Super powerfull variable 
+   const [ListofRestaurant,setListofRestaurant] = useState<any[]>([])
+
+   const [Searchtext, setSearchtext] = useState("")
+   
+  //  Whenever state variables update, react triggers a reconciliation cycle (re-renders the component)
+    console.log("body re-render")
+   useEffect(()=>{
+    fetchData();
+   }, []);
+
+   const fetchData = async() => {
+      const data = await fetch(
+        "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.45970&lng=77.02820&carousel=true&third_party_vendor=1");
+
+      const json = await data.json()
+      console.log(json);
+      const restaurants =
+         json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+      
+      setListofRestaurant(restaurants);
+   }
+      // Loader Screen
+      // Shimmer UI : fake card is showing till the data is loaded
+       if(ListofRestaurant.length === 0 ){
+      //  return <h1>Loading......</h1>
+          return <Shimmer/>
+       }
+
+  //  console.log("body rendeer")
+
     return(
     <div className ="body-container">
-        <div className = "search-bar">Search</div>
-        <button className="filter-btn" onClick={() => {
-          const ListofRest = ListofRestaurant.filter((res)=> res.info.avgRating < 4);
+        <div className = "filter">
+         <div className="search">
+          <input type="text" className="search-box" value={Searchtext} onChange={(e) =>{
+              setSearchtext(e.target.value);
+          }}/>
+          <button onClick={() =>{
+            console.log(Searchtext);
+          }}>search</button>
+         </div>
+       
+         <button className="filter-btn" onClick={() => {
+          const ListofRest = ListofRestaurant.filter((res)=> res?.info?.avgRating < 4);
           console.log(ListofRest);
            setListofRestaurant(ListofRest);
         }}>
          Top Rated Restaurant
-        </button>
+         </button>
+        </div> 
         <div className="res-Container">
             {/* Keys help React identify which items have changed, are added, 
             or are removed.Keys should be given to the elements inside the array 
              to give the elements a stable identity*/}
-             {/* would use IDs from your data as keys: When you don’t have stable IDs for rendered items, 
-             you may use the item index as a key as a last resort:
+             {/* would use IDs from our data as keys: When we don’t have stable IDs for rendered items, 
+             we may use the item index as a key as a last resort:
                */}    
             {ListofRestaurant.map((res)=>(
                 <RestaurentCard
-                key ={res.info.id} 
+                key ={res?.info?.id} 
                 resData={res}/>
                 ))}
                 {/* {restaurants.map((res)=>(
