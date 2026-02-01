@@ -5,7 +5,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () =>{
   // local State variable - Super powerfull variable 
-   const [ListofRestaurant,setListofRestaurant] = useState<any[]>([])
+   const [ListofRestaurant,setListofRestaurant] = useState<any[]>([]);
+   const[filteredRestaurant,setfilteredRestaurant] = useState<any[]>([]);
 
    const [Searchtext, setSearchtext] = useState("")
    
@@ -25,30 +26,42 @@ const Body = () =>{
          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       
       setListofRestaurant(restaurants);
+      setfilteredRestaurant(restaurants);
    }
       // Loader Screen
       // Shimmer UI : fake card is showing till the data is loaded
-       if(ListofRestaurant.length === 0 ){
-      //  return <h1>Loading......</h1>
-          return <Shimmer/>
-       }
+      //  if(ListofRestaurant.length === 0 ){
+      // //  return <h1>Loading......</h1>
+      //     return <Shimmer/>
+      //  }
 
   //  console.log("body rendeer")
 
-    return(
+    return ListofRestaurant.length === 0 ?(
+      <Shimmer/>
+    ) : (
     <div className ="body-container">
         <div className = "filter">
          <div className="search">
           <input type="text" className="search-box" value={Searchtext} onChange={(e) =>{
               setSearchtext(e.target.value);
           }}/>
-          <button onClick={() =>{
+          <button onClick={() =>{ 
             console.log(Searchtext);
+
+            const filteredList = ListofRestaurant.filter((res) =>
+                 res.info.name.toLowerCase().includes(Searchtext.toLowerCase())
+            );
+            console.log(filteredList)
+            setfilteredRestaurant(filteredList);
+            console.log(filteredList);
+   
+           
           }}>search</button>
          </div>
        
          <button className="filter-btn" onClick={() => {
-          const ListofRest = ListofRestaurant.filter((res)=> res?.info?.avgRating < 4);
+          const ListofRest = ListofRestaurant.filter((res)=> res?.info?.avgRating > 4.2);
           console.log(ListofRest);
            setListofRestaurant(ListofRest);
         }}>
@@ -62,7 +75,7 @@ const Body = () =>{
              {/* would use IDs from our data as keys: When we don’t have stable IDs for rendered items, 
              we may use the item index as a key as a last resort:
                */}    
-            {ListofRestaurant.map((res)=>(
+            {filteredRestaurant.map((res)=>(
                 <RestaurentCard
                 key ={res?.info?.id} 
                 resData={res}/>
