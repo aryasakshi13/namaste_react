@@ -20,6 +20,7 @@ const Body = () =>{
       const data = await fetch(
         "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.45970&lng=77.02820&carousel=true&third_party_vendor=1");
 
+         if (!data.ok) throw new Error("API failed");
       const json = await data.json()
       console.log(json);
       const restaurants =
@@ -30,11 +31,6 @@ const Body = () =>{
    }
       // Loader Screen
       // Shimmer UI : fake card is showing till the data is loaded
-      //  if(ListofRestaurant.length === 0 ){
-      // //  return <h1>Loading......</h1>
-      //     return <Shimmer/>
-      //  }
-
   //  console.log("body rendeer")
 
     return ListofRestaurant.length === 0 ?(
