@@ -2,6 +2,7 @@ import RestaurentCard from "./RestaurantCard";
 
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import RestaurantMenu from "./RestaurantMenu";
 
 const Body = () =>{
   // local State variable - Super powerfull variable 
@@ -18,11 +19,10 @@ const Body = () =>{
 
    const fetchData = async() => {
       const data = await fetch(
-        "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.45970&lng=77.02820&carousel=true&third_party_vendor=1");
+        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
 
-         if (!data.ok) throw new Error("API failed");
       const json = await data.json()
-      console.log(json);
+      console.log("Restaurant data", json);
       const restaurants =
          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       
