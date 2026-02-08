@@ -31,8 +31,7 @@ const Body = () =>{
    };
 
     const onlineStatus = useOnlineStatus();
-
-    if(onlineStatus=== false)
+    if(onlineStatus === false)
       return(
        <h1>
           Looks you're offline!! Please check your internet connection ;

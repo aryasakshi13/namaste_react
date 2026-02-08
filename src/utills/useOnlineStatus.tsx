@@ -6,7 +6,7 @@ const useOnlineStatus = () =>{
    //  check if online 
      useEffect (() =>{
     // EventListener need to exeute at once 
-       window.addEventListener("ofline", (event) => {
+       window.addEventListener("offline", (event) => {
          setOnlineStatus(false);
 });
      window.addEventListener("online", (event) => {
