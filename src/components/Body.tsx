@@ -1,8 +1,8 @@
 import RestaurentCard from "./RestaurantCard";
-
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 import RestaurantMenu from "./RestaurantMenu";
+import useOnlineStatus from "../utills/useOnlineStatus";
 
 const Body = () =>{
   // local State variable - Super powerfull variable 
@@ -28,11 +28,19 @@ const Body = () =>{
       
       setListofRestaurant(restaurants);
       setfilteredRestaurant(restaurants);
-   }
+   };
+
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus=== false)
+      return(
+       <h1>
+          Looks you're offline!! Please check your internet connection ;
+       </h1>
+    );
       // Loader Screen
       // Shimmer UI : fake card is showing till the data is loaded
   //  console.log("body rendeer")
-
     return ListofRestaurant.length === 0 ?(
       <Shimmer/>
     ) : (

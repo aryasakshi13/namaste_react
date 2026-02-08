@@ -1,34 +1,33 @@
-import { useState, useEffect } from "react";
+import useRestaurantMenu from "../utills/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 
+
 const RestaurantMenu = () => {
-    const [resInfo, setresInfo] = useState(null);
+    
 
     const {resId} = useParams();
+
+    const resInfo = useRestaurantMenu(resId);
     
-    
-    
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []); 
 
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-
-    const fetchMenu = async () => {
+    // const fetchMenu = async () => {
 
         // We use a CORS Proxy to trick Swiggy into thinking the request is safe
 
-        const response = await fetch(`https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=${resId}`);
-
+        // const response = await fetch(`https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=${resId}`);
+        //    const response = await fetch(MENU_API + resId);
         // Check if response is actually there
 
 
-        const json = await response.json();
-        console.log("Success! Data is here:", json.data.cards);
-        setresInfo(json.data);
-    };
+    //     const json = await response.json();
+    //     console.log("Success! Data is here:", json.data.cards);
+    //     setresInfo(json.data);
+    // };
     
     type RestaurantInfo = {
   name: string;
@@ -57,7 +56,7 @@ const RestaurantMenu = () => {
             <p>{avgRating}</p>
             <h2>Recomended</h2>
             <ul>
-               { itemCards.map((item) => (
+               { itemCards?.map((item) => (
                  <li key = {item.card.info.id}>
                     {item.card.info.name}  
                  </li>

@@ -88,3 +88,12 @@ useEffect () -
      - That's why this is best place to make an api call 
      
      React make the batch of render pahse of all child and parent component first because dom manupulation is very expensive and the render phase is the (find the diff b/w the two abjects and update the dom (react reconsiliation process)). That's why the react is so fast .
+
+
+  # Mounting 
+
+  - Constructor call (dummy data)
+  - render data (dummy data)
+  - <html dummy data> - Update in dom
+  - Component did mount call 
+

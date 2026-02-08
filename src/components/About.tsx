@@ -13,7 +13,7 @@ class About extends React.Component{
       <div>
         <h1>About</h1>
         <h2>This is namaste React web Series </h2>
-        <User name = {"sakshi(function)"} Location={"Delhi"}/>
+        {/* <User name = {"sakshi(function)"} Location={"Delhi"}/> */}
         <UserClass name = {"Sakshi(class)"}  Location = {"Delhi"}/>
 
       </div>
