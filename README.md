@@ -75,7 +75,7 @@ useEffect () -
      -second child render
      -first child  Component did mount 
      -second child Did mount 
-     Parent Didi mount 
+     -Parent Didi mount 
 
      in the react when the component is mounted it is mounted in two phases 
      - Render phase  - 
@@ -96,4 +96,16 @@ useEffect () -
   - render data (dummy data)
   - <html dummy data> - Update in dom
   - Component did mount call 
+
+  # Custom hook 
+  # Lazy loading 
+
+   # Css multple ways 
+  - Saas and Scss
+  -Style component 
+  -Tailwind Css
+  - Bootstrap
+  - Material UI
+  - Chakra Ui 
+  - Ant Design 
 

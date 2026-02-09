@@ -18,11 +18,11 @@ const RestaurentCard = (props:RestaurantCardProps) => {
 
     // console.log(props);
   return(
-    <div onClick={() => navigate(`/restaurant/${props.resData.info.id}`)} className="res-card">
-            <img className="res-logo" 
+    <div  onClick={() => navigate(`/restaurant/${props.resData.info.id}`)} className="res-card w-56 border p-1 rounded-md bg-gray-50 hover:bg-gray-200">
+            <img className="res-logo rounded-md" 
             alt = "res-logo"
             src ={CDN_URL +cloudinaryImageId}/>
-        <h3>{name}</h3>
+        <h3 className="font-bold py-4 text-lg">{name}</h3>
         <h3>{cuisines.join(", ")}</h3>
         <h3>{avgRating} star</h3>
              <h3>{costForTwo}</h3>

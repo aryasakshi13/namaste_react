@@ -44,12 +44,12 @@ const Body = () =>{
       <Shimmer/>
     ) : (
     <div className ="body-container">
-        <div className = "filter">
+        <div className = "filter flex gap-6 justify-center">
          <div className="search">
-          <input type="text" className="search-box" value={Searchtext} onChange={(e) =>{
+          <input type="text" className="search-box mr-4 border border-orange-400 rounded-md" value={Searchtext} onChange={(e) =>{
               setSearchtext(e.target.value);
           }}/>
-          <button onClick={() =>{ 
+          <button className="bg-orange-400 rounded-md pl-2 pr-2" onClick={() =>{ 
             console.log(Searchtext);
 
             const filteredList = ListofRestaurant.filter((res) =>
@@ -63,7 +63,7 @@ const Body = () =>{
           }}>search</button>
          </div>
        
-         <button className="filter-btn" onClick={() => {
+         <button className="filter-btn rounded pl-2 pr-2 bg-orange-400" onClick={() => {
           const ListofRest = ListofRestaurant.filter((res)=> res?.info?.avgRating > 4.2);
           console.log(ListofRest);
            setListofRestaurant(ListofRest);
@@ -71,7 +71,7 @@ const Body = () =>{
          Top Rated Restaurant
          </button>
         </div> 
-        <div className="res-Container">
+        <div className="res-Container pl-8 pt-6 flex flex-wrap gap-6 ">
             {/* Keys help React identify which items have changed, are added, 
             or are removed.Keys should be given to the elements inside the array 
              to give the elements a stable identity*/}
