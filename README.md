@@ -99,6 +99,8 @@ useEffect () -
 
   # Custom hook 
   # Lazy loading 
+  # window event - Event Listner
+  - Uses for online offline status check 
 
    # Css multple ways 
   - Saas and Scss
@@ -109,3 +111,6 @@ useEffect () -
   - Chakra Ui 
   - Ant Design 
 
+# Css 
+# Higher Order Component 
+ -Higher order component is a function that takes a component as an input and  it inhances that component(add some feature onto that)  and returns a  new component.

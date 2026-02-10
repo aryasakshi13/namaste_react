@@ -1,7 +1,7 @@
 import RestaurentCard from "./RestaurantCard";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
-import RestaurantMenu from "./RestaurantMenu";
+// import RestaurantMenu from "./RestaurantMenu";
 import useOnlineStatus from "../utills/useOnlineStatus";
 
 const Body = () =>{
@@ -12,7 +12,7 @@ const Body = () =>{
    const [Searchtext, setSearchtext] = useState("")
    
   //  Whenever state variables update, react triggers a reconciliation cycle (re-renders the component)
-    console.log("body re-render")
+    console.log("body re-render:", ListofRestaurant)
    useEffect(()=>{
     fetchData();
    }, []);

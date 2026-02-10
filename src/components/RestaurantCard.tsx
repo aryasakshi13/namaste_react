@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CDN_URL } from "../utills/constants";
-import RestaurantMenu from "./RestaurantMenu";
+// import RestaurantMenu from "./RestaurantMenu";
 type RestaurantCardProps = {
    resData: any;
     
