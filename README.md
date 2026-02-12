@@ -114,3 +114,30 @@ useEffect () -
 # Css 
 # Higher Order Component 
  -Higher order component is a function that takes a component as an input and  it inhances that component(add some feature onto that)  and returns a  new component.
+
+ # Controlled and Uncontrolld component 
+  when the component is controlled by  its parent (when the componet is relying upon its parent to its what to do it is called controlled compnent) 
+
+  Uncontrolled not relying on  its parent it has own state (maning state by itself )
+
+  # Lifting State 
+
+  # Props Driling 
+
+  # rect Context 
+  Avoiding Props driling  . COntext is a global kind of object for react in react Application 
+  # context in react 
+  # how do we use context in functional ciomponent 
+  using useContxrt hook 
+
+  #  How do we use Context in class Component 
+      We can use the hook with .consumer
+      <UserContext.consumer>
+         {(data) => console.log(data)}
+      </UserContext.consumer> 
+  # modify the Context 
+  - <userContext.provider value ={{loggedInUser:userName}}>
+   If we want to modify header then only import heade 
+   </Header>
+   if want to modify in whole app 
+  </userContext.provider>
